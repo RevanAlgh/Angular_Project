@@ -1,15 +1,17 @@
 <div class="container mt-4">
     <h2>Movie Planning Tasks</h2>
-    <input type="text" [(ngModel)]="newTaskName" placeholder="Add a new task" class="form-control mb-2" />
-    <button (click)="addTask()" class="btn btn-primary">Add Task</button>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Add a new task" [(ngModel)]="taskName" />
+      <button class="btn btn-success" (click)="addTask()">Add</button>
+    </div>
   
-    <ul class="list-group mt-3">
-      <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
+    <ul class="list-group">
+      <li *ngFor="let task of tasks; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
         <div>
-          <input type="checkbox" [(ngModel)]="task.completed" (change)="toggleTaskCompletion(task.id)" />
-          <span [ngClass]="{ 'text-decoration-line-through': task.completed }">{{ task.name }}</span>
+          <input type="checkbox" [(ngModel)]="task.done" (change)="toggleTask(i)" />
+          <span [ngClass]="{ 'text-decoration-line-through': task.done }">{{ task.name }}</span>
         </div>
-        <button (click)="deleteTask(task.id)" class="btn btn-danger btn-sm">Delete</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteTask(i)">Delete</button>
       </li>
     </ul>
   </div>

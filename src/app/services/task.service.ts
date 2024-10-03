@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Task } from '../models/task.model';
 
-interface Task {
-  id: number;
-  name: string;
-  completed: boolean;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TaskService {
-
-  private tasks: Task[] = [];
-  private idCounter = 1;
-
-  addTask(name: string) {
-    this.tasks.push({ id: this.idCounter++, name, completed: false });
-  }
+  private tasks: Task[] = []; 
 
   getTasks() {
     return this.tasks;
   }
 
-  toggleTaskCompletion(id: number) {
-    const task = this.tasks.find(task => task.id === id);
-    if (task) {
-      task.completed = !task.completed;
-    }
+  addTask(taskName: string) {
+    const newTask: Task = { name: taskName, done: false }; // Create a new task object
+    this.tasks.push(newTask);
   }
 
-  deleteTask(id: number) {
-    this.tasks = this.tasks.filter(task => task.id !== id);
+  deleteTask(index: number) {
+    this.tasks.splice(index, 1);
+  }
+
+  toggleTask(index: number) {
+    this.tasks[index].done = !this.tasks[index].done; // Toggle task completion
   }
 }

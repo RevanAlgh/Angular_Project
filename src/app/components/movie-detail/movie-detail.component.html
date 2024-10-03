@@ -1,0 +1,8 @@
+<div class="container mt-4" *ngIf="movie">
+    <h2>{{ movie.Title }}</h2>
+    <p><strong>Release Date:</strong> {{ movie.Year }}</p>
+    <p><strong>IMDB Rating:</strong> {{ movie.imdbRating }}</p>
+    <p>{{ movie.Plot }}</p>
+    <button class="btn btn-success" (click)="addToTaskList()">Add to Task List</button>
+  </div>
+  

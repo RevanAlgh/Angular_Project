@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
+import { Task } from '../../models/task.model';
+
 
 
 @Component({
@@ -7,26 +9,34 @@ import { TaskService } from '../../services/task.service';
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
+
 export class TaskListComponent {
+  taskName: string = '';
+  tasks: Task[] = [];
 
-  newTaskName = '';
-  tasks = this.taskService.getTasks();
-
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) {
+    this.tasks = this.taskService.getTasks(); // Get tasks from the service
+  }
 
   addTask() {
-    if (this.newTaskName.trim()) {
-      this.taskService.addTask(this.newTaskName);
-      this.newTaskName = '';
+    if (this.taskName) {
+      this.taskService.addTask(this.taskName);
+      this.taskName = ''; // Clear input
+      this.updateTaskList(); // Refresh the displayed task list
     }
   }
 
-  toggleTaskCompletion(id: number) {
-    this.taskService.toggleTaskCompletion(id);
+  deleteTask(index: number) {
+    this.taskService.deleteTask(index);
+    this.updateTaskList(); // Refresh the displayed task list
   }
 
-  deleteTask(id: number) {
-    this.taskService.deleteTask(id);
+  toggleTask(index: number) {
+    this.taskService.toggleTask(index);
+    this.updateTaskList(); // Refresh the displayed task list
   }
-  
+
+  private updateTaskList() {
+    this.tasks = this.taskService.getTasks(); // Update the task list
+  }
 }

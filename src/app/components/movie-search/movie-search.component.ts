@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,19 +9,18 @@ import { MovieService } from '../../services/movie.service';
   styleUrl: './movie-search.component.css'
 })
 export class MovieSearchComponent {
-  searchTitle = '';
+  searchQuery: string = '';
   movies: any[] = [];
-  selectedMovie: any;
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
   searchMovies() {
-    this.movieService.searchMovies(this.searchTitle).subscribe((data: any) => {
-      this.movies = data.Search;
+    this.movieService.searchMovies(this.searchQuery).subscribe((data: any) => {
+      this.movies = data.Search || [];
     });
   }
 
-  selectMovie(movie: any) {
-    this.selectedMovie = movie;
+  selectMovie(movieId: string) {
+    this.router.navigate(['/movies', movieId]);
   }
 }
