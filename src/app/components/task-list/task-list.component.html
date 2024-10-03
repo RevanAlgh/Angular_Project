@@ -1,0 +1,16 @@
+<div class="container mt-4">
+    <h2>Movie Planning Tasks</h2>
+    <input type="text" [(ngModel)]="newTaskName" placeholder="Add a new task" class="form-control mb-2" />
+    <button (click)="addTask()" class="btn btn-primary">Add Task</button>
+  
+    <ul class="list-group mt-3">
+      <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <input type="checkbox" [(ngModel)]="task.completed" (change)="toggleTaskCompletion(task.id)" />
+          <span [ngClass]="{ 'text-decoration-line-through': task.completed }">{{ task.name }}</span>
+        </div>
+        <button (click)="deleteTask(task.id)" class="btn btn-danger btn-sm">Delete</button>
+      </li>
+    </ul>
+  </div>
+  
