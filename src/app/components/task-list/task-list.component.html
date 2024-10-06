@@ -1,17 +1,57 @@
 <div class="container mt-4">
-  <h2>Movie Planning Tasks</h2>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Add a new task" [(ngModel)]="taskName" />
-    <button class="btn btn-success" (click)="addTask()">Add</button>
-  </div>
+  <h2 class="text-white">
+     Movie Planning Tasks
+  </h2>
 
-  <ul class="list-group">
-    <li *ngFor="let task of tasks; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <input type="checkbox" [(ngModel)]="task.done" (change)="toggleTask(i)" />
-        <span [ngClass]="{ 'text-decoration-line-through': task.done }">{{ task.name }}</span>
+  <div class="row mt-4">
+
+    <!-- General Tasks Section -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card mb-4 text-white mask-custom shadow-0">
+        <div class="card-body">
+          <h5 class="card-title"> <i class="bi bi-list-task white-icon"></i> Tasks List</h5>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Add a new task"
+              [(ngModel)]="taskName" />
+            <button class="btn btn-secondary" (click)="addTask()">Add</button> 
+          </div>
+          <ul class="list-group">
+            <li *ngFor="let task of tasks; let i = index"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <input type="checkbox" [(ngModel)]="task.done"
+                  (change)="toggleTask(i)" />
+                <span
+                  [ngClass]="{ 'text-decoration-line-through': task.done }">{{ task.name }}</span>
+              </div>
+              <button class="btn btn-danger btn-sm"
+                (click)="deleteTask(i)">Delete</button>
+            </li>
+          </ul>
+        </div>
       </div>
-      <button class="btn btn-danger btn-sm" (click)="deleteTask(i)">Delete</button>
-    </li>
-  </ul>
+    </div>
+
+    <!-- Movie Tasks Section -->
+    <div class="col-lg-6 col-md-12">
+      <div class="card mb-4 text-white mask-custom shadow-0">
+        <div class="card-body">
+          <h5 class="card-title"> <i class="bi bi-film white-icon"></i> Movie List</h5>
+          <ul class="list-group">
+            <li *ngFor="let movieTask of movieTasks; let i = index"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <input type="checkbox" [(ngModel)]="movieTask.done"
+                  (change)="toggleMovieTask(i)" />
+                <span
+                  [ngClass]="{ 'text-decoration-line-through': movieTask.done }">{{ movieTask.name }}</span>
+              </div>
+              <button class="btn btn-danger btn-sm"
+                (click)="deleteMovieTask(i)">Delete</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

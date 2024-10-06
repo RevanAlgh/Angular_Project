@@ -30,3 +30,8 @@
     font-size: 1.75rem;
     letter-spacing: 3px;
 }
+
+.white-icon {
+    font-size: 2rem; 
+    color: white;   
+}

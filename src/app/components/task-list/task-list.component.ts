@@ -13,36 +13,48 @@ import { Task } from '../../models/task.model';
 export class TaskListComponent {
   taskName: string = '';
   tasks: Task[] = [];
+  movieTasks: Task[] = []; 
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
-    this.loadTasks();  // Load tasks when the component initializes
+    this.loadTasks();  
+    this.loadMovieTasks(); 
   }
 
-  // Load tasks from the task service
   loadTasks() {
     this.tasks = this.taskService.getTasks();
   }
 
-  // Add a new task using the task name input
+  loadMovieTasks() {
+    this.movieTasks = this.taskService.getMovieTasks(); 
+  }
+
   addTask() {
     if (this.taskName.trim()) {
       this.taskService.addTask(this.taskName);
-      this.taskName = '';  // Clear the input after adding the task
-      this.loadTasks();    // Reload tasks to reflect the new task
+      this.taskName = ''; 
+      this.loadTasks(); 
     }
   }
 
-  // Delete a task by index
   deleteTask(index: number) {
     this.taskService.deleteTask(index);
-    this.loadTasks();  // Reload tasks after deletion
+    this.loadTasks(); 
   }
 
-  // Toggle the done status of a task
   toggleTask(index: number) {
     this.taskService.toggleTask(index);
-    this.loadTasks();  // Reload tasks after toggling completion
+    this.loadTasks(); 
+  }
+
+  deleteMovieTask(index: number) {
+    this.taskService.deleteMovieTask(index);
+    this.loadMovieTasks(); 
+  }
+
+  toggleMovieTask(index: number) {
+    this.taskService.toggleMovieTask(index);
+    this.loadMovieTasks(); 
   }
 }

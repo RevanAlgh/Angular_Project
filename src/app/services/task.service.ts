@@ -8,30 +8,39 @@ import { Task } from '../models/task.model';
 
 export class TaskService {
   private tasks: Task[] = []; 
+  private movieTasks: Task[] = [];
 
   getTasks() {
     return this.tasks;
   }
 
-   // Add a new task with the provided name
-   addTask(taskName: string) {
+  getMovieTasks() {
+    return this.movieTasks;
+  }
+
+  addTask(taskName: string) {
     const newTask: Task = { name: taskName, done: false };
     this.tasks.push(newTask);
   }
 
-  // Add a task specifically for a movie
   addMovieTask(movieTitle: string) {
     const movieTask: Task = { name: `Watch: ${movieTitle}`, done: false };
-    this.tasks.push(movieTask);
+    this.movieTasks.push(movieTask);
   }
 
-  // Delete a task by index
   deleteTask(index: number) {
     this.tasks.splice(index, 1);
   }
 
-  // Toggle the done status of a task
+  deleteMovieTask(index: number) {
+    this.movieTasks.splice(index, 1);
+  }
+
   toggleTask(index: number) {
     this.tasks[index].done = !this.tasks[index].done;
+  }
+
+  toggleMovieTask(index: number) {
+    this.movieTasks[index].done = !this.movieTasks[index].done;
   }
 }

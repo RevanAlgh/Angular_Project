@@ -2,3 +2,12 @@
     text-decoration: line-through;
   }
   
+  .mask-custom {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, .15);
+}
+
+.large-white-icon {
+  font-size: 1rem; 
+  color: white;   
+}
