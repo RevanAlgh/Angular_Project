@@ -22,7 +22,7 @@
                 <input type="checkbox" [(ngModel)]="task.done"
                   (change)="toggleTask(i)" />
                 <span
-                  [ngClass]="{ 'text-decoration-line-through': task.done }">{{ task.name }}</span>
+                  [ngClass]="{ 'text-decoration-line-through': task.done }"> {{ task.name }}</span>
               </div>
               <button class="btn btn-danger btn-sm"
                 (click)="deleteTask(i)">Delete</button>
@@ -44,7 +44,7 @@
                 <input type="checkbox" [(ngModel)]="movieTask.done"
                   (change)="toggleMovieTask(i)" />
                 <span
-                  [ngClass]="{ 'text-decoration-line-through': movieTask.done }">{{ movieTask.name }}</span>
+                  [ngClass]="{ 'text-decoration-line-through': movieTask.done }"> {{ movieTask.name }}</span>
               </div>
               <button class="btn btn-danger btn-sm"
                 (click)="deleteMovieTask(i)">Delete</button>
