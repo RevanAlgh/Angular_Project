@@ -6,7 +6,7 @@ import { TaskService } from '../../services/task.service';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrl: './movie-detail.component.css'
+  styleUrls: ['./movie-detail.component.css'] // Corrected the styleUrls property
 })
 export class MovieDetailComponent implements OnInit {
   movie: any;
@@ -21,14 +21,15 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.movieService.getMovieDetails(id).subscribe(
-        (response: any) => {
+      // Fetch movie details using fetch (Promise-based)
+      this.movieService.getMovieDetails(id)
+        .then((response: any) => {
           this.movie = response;
-        },
-        (error) => {
+        })
+        .catch((error) => {
           this.error = 'Error fetching movie details.';
-        }
-      );
+          console.error(error);
+        });
     }
   }
 

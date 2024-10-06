@@ -19,24 +19,17 @@ export class MovieSearchComponent {
   constructor(private movieService: MovieService) {}
 
   searchMovies() {
-    if (this.title) {
-      this.movieService.searchMovies(this.title, this.year, this.genre, this.language).subscribe(
-        (response: any) => {
-          if (response.Search) {
-            this.movies = response.Search;
-            this.error = '';
-          } else {
-            this.movies = [];
-            this.error = 'No movies found!';
-          }
-        },
-        (error) => {
-          this.movies = [];
-          this.error = 'An error occurred while fetching data.';
+    this.movieService.searchMovies(this.title, this.year, this.genre, this.language)
+      .then((response: any) => {
+        if (response.Search) {
+          this.movies = response.Search;
+        } else {
+          this.error = 'No movies found';
         }
-      );
-    } else {
-      this.error = 'Please enter a movie title!';
-    }
+      })
+      .catch((error: any) => {
+        this.error = 'Error fetching movies';
+        console.error(error);
+      });
   }
 }
