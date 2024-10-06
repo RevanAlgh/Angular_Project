@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { TaskService } from '../../services/task.service';
@@ -8,9 +8,9 @@ import { TaskService } from '../../services/task.service';
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.css'
 })
-export class MovieDetailComponent {
+export class MovieDetailComponent implements OnInit {
   movie: any;
-  movieId!: string;
+  error: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -18,16 +18,24 @@ export class MovieDetailComponent {
     private taskService: TaskService
   ) {}
 
-  ngOnInit() {
-    this.movieId = this.route.snapshot.paramMap.get('id')!;
-    this.movieService.getMovieDetails(this.movieId).subscribe((data: any) => {
-      this.movie = data;
-    });
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.movieService.getMovieDetails(id).subscribe(
+        (response: any) => {
+          this.movie = response;
+        },
+        (error) => {
+          this.error = 'Error fetching movie details.';
+        }
+      );
+    }
   }
 
   addToTaskList() {
     if (this.movie) {
-      this.taskService.addTask(this.movie.Title);
+      this.taskService.addMovieTask(this.movie.Title);
+      alert('Movie added to your task list!');
     }
   }
 }

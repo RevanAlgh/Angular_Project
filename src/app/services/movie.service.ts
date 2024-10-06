@@ -12,8 +12,20 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  searchMovies(query: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}?s=${query}&apikey=${this.apiKey}`);
+  searchMovies(title: string, year?: string, genre?: string, language?: string): Observable<any> {
+    let query = `${this.baseUrl}?s=${title}&apikey=${this.apiKey}`;
+
+    if (year) {
+      query += `&y=${year}`;
+    }
+    if (genre) {
+      query += `&genre=${genre}`;
+    }
+    if (language) {
+      query += `&language=${language}`;
+    }
+
+    return this.http.get(query);
   }
 
   getMovieDetails(id: string): Observable<any> {

@@ -9,18 +9,34 @@ import { Router } from '@angular/router';
   styleUrl: './movie-search.component.css'
 })
 export class MovieSearchComponent {
-  searchQuery: string = '';
+  title: string = '';
+  year: string = '';
+  genre: string = '';
+  language: string = '';
   movies: any[] = [];
+  error: string = '';
 
-  constructor(private movieService: MovieService, private router: Router) {}
+  constructor(private movieService: MovieService) {}
 
   searchMovies() {
-    this.movieService.searchMovies(this.searchQuery).subscribe((data: any) => {
-      this.movies = data.Search || [];
-    });
-  }
-
-  selectMovie(movieId: string) {
-    this.router.navigate(['/movies', movieId]);
+    if (this.title) {
+      this.movieService.searchMovies(this.title, this.year, this.genre, this.language).subscribe(
+        (response: any) => {
+          if (response.Search) {
+            this.movies = response.Search;
+            this.error = '';
+          } else {
+            this.movies = [];
+            this.error = 'No movies found!';
+          }
+        },
+        (error) => {
+          this.movies = [];
+          this.error = 'An error occurred while fetching data.';
+        }
+      );
+    } else {
+      this.error = 'Please enter a movie title!';
+    }
   }
 }

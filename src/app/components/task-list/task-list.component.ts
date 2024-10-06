@@ -14,29 +14,35 @@ export class TaskListComponent {
   taskName: string = '';
   tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) {
-    this.tasks = this.taskService.getTasks(); // Get tasks from the service
+  constructor(private taskService: TaskService) {}
+
+  ngOnInit(): void {
+    this.loadTasks();  // Load tasks when the component initializes
   }
 
+  // Load tasks from the task service
+  loadTasks() {
+    this.tasks = this.taskService.getTasks();
+  }
+
+  // Add a new task using the task name input
   addTask() {
-    if (this.taskName) {
+    if (this.taskName.trim()) {
       this.taskService.addTask(this.taskName);
-      this.taskName = ''; // Clear input
-      this.updateTaskList(); // Refresh the displayed task list
+      this.taskName = '';  // Clear the input after adding the task
+      this.loadTasks();    // Reload tasks to reflect the new task
     }
   }
 
+  // Delete a task by index
   deleteTask(index: number) {
     this.taskService.deleteTask(index);
-    this.updateTaskList(); // Refresh the displayed task list
+    this.loadTasks();  // Reload tasks after deletion
   }
 
+  // Toggle the done status of a task
   toggleTask(index: number) {
     this.taskService.toggleTask(index);
-    this.updateTaskList(); // Refresh the displayed task list
-  }
-
-  private updateTaskList() {
-    this.tasks = this.taskService.getTasks(); // Update the task list
+    this.loadTasks();  // Reload tasks after toggling completion
   }
 }

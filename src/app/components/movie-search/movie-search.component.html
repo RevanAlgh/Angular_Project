@@ -1,14 +1,37 @@
 <div class="container mt-4">
-    <h2>Movie Search</h2>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search for movies" [(ngModel)]="searchQuery" />
-      <button class="btn btn-primary" (click)="searchMovies()">Search</button>
-    </div>
-  
+  <h2>Search Movies</h2>
+
+  <div class="mb-3">
+    <label for="title">Title</label>
+    <input type="text" id="title" class="form-control" [(ngModel)]="title" placeholder="Enter movie title" />
+  </div>
+
+  <div class="mb-3">
+    <label for="year">Year</label>
+    <input type="text" id="year" class="form-control" [(ngModel)]="year" placeholder="Enter year (optional)" />
+  </div>
+
+  <div class="mb-3">
+    <label for="genre">Genre</label>
+    <input type="text" id="genre" class="form-control" [(ngModel)]="genre" placeholder="Enter genre (optional)" />
+  </div>
+
+  <div class="mb-3">
+    <label for="language">Language</label>
+    <input type="text" id="language" class="form-control" [(ngModel)]="language" placeholder="Enter language (optional)" />
+  </div>
+
+  <button class="btn btn-primary" (click)="searchMovies()">Search</button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+
+  <div *ngIf="movies.length > 0" class="mt-4">
+    <h3>Search Results:</h3>
     <ul class="list-group">
-      <li *ngFor="let movie of movies" class="list-group-item" (click)="selectMovie(movie.imdbID)">
+      <li *ngFor="let movie of movies" class="list-group-item">
         {{ movie.Title }} ({{ movie.Year }})
+        <button class="btn btn-info btn-sm float-end" routerLink="/movies/{{movie.imdbID}}">More Details</button>
       </li>
     </ul>
   </div>
-  
+</div>

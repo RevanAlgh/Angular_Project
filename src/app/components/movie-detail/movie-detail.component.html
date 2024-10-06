@@ -1,8 +1,19 @@
 <div class="container mt-4" *ngIf="movie">
-    <h2>{{ movie.Title }}</h2>
-    <p><strong>Release Date:</strong> {{ movie.Year }}</p>
-    <p><strong>IMDB Rating:</strong> {{ movie.imdbRating }}</p>
-    <p>{{ movie.Plot }}</p>
-    <button class="btn btn-success" (click)="addToTaskList()">Add to Task List</button>
+  <h2>{{ movie.Title }} ({{ movie.Year }})</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <img [src]="movie.Poster" alt="{{ movie.Title }} poster" class="img-fluid" *ngIf="movie.Poster !== 'N/A'" />
+    </div>
+    <div class="col-md-8">
+      <p><strong>Released:</strong> {{ movie.Released }}</p>
+      <p><strong>Genre:</strong> {{ movie.Genre }}</p>
+      <p><strong>Language:</strong> {{ movie.Language }}</p>
+      <p><strong>IMDB Rating:</strong> {{ movie.imdbRating }}</p>
+      <p><strong>Plot:</strong> {{ movie.Plot }}</p>
+
+      <button class="btn btn-primary" (click)="addToTaskList()">Add to Task List</button>
+    </div>
   </div>
-  
+</div>
+
+<div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>

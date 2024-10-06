@@ -1,18 +1,17 @@
 <div class="container mt-4">
-    <h2>Movie Planning Tasks</h2>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Add a new task" [(ngModel)]="taskName" />
-      <button class="btn btn-success" (click)="addTask()">Add</button>
-    </div>
-  
-    <ul class="list-group">
-      <li *ngFor="let task of tasks; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
-        <div>
-          <input type="checkbox" [(ngModel)]="task.done" (change)="toggleTask(i)" />
-          <span [ngClass]="{ 'text-decoration-line-through': task.done }">{{ task.name }}</span>
-        </div>
-        <button class="btn btn-danger btn-sm" (click)="deleteTask(i)">Delete</button>
-      </li>
-    </ul>
+  <h2>Movie Planning Tasks</h2>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Add a new task" [(ngModel)]="taskName" />
+    <button class="btn btn-success" (click)="addTask()">Add</button>
   </div>
-  
+
+  <ul class="list-group">
+    <li *ngFor="let task of tasks; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <input type="checkbox" [(ngModel)]="task.done" (change)="toggleTask(i)" />
+        <span [ngClass]="{ 'text-decoration-line-through': task.done }">{{ task.name }}</span>
+      </div>
+      <button class="btn btn-danger btn-sm" (click)="deleteTask(i)">Delete</button>
+    </li>
+  </ul>
+</div>

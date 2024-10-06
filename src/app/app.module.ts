@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; 
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +26,8 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule     
   ],
   providers: [
     provideClientHydration()

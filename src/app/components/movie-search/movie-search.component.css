@@ -1,4 +1,13 @@
+.container {
+  max-width: 600px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
 .list-group-item {
-    cursor: pointer;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
