@@ -1,13 +1,82 @@
 .container {
-  max-width: 600px;
-}
-
-.btn {
-  margin-top: 10px;
+    max-width: 600px;
 }
 
 .list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mask-custom {
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, .15);
+}
+
+.card {
+    width: 130%;
+}
+
+#form-tagline {
+    background-color: rgba(1, 29, 20, 0.623);
+    padding: 30px;
+}
+
+.large-white-icon {
+    font-size: 2rem;
+    color: white;
+}
+
+.btn {
+    color: #ecf5f3;
+    font-family: 'Archivo', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 15px;
+    border-radius: 50px;
+    border: none;
+    position: relative;
+    z-index: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+    color: #ecf5f3;
+}
+
+.btn:before,
+.btn:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    transition: 0.7s;
+}
+
+.btn:before {
+    border-top: 2px solid #ecf5f3;
+    border-left: 2px solid #ecf5f3;
+    top: -0.5px;
+    left: -0.5px;
+}
+
+.btn:after {
+    border-top: 2px solid #ecf5f3;
+    border-right: 2px solid #ecf5f3;
+    top: -0.5px;
+    right: -0.5px;
+}
+
+.btn:hover:before,
+.btn:hover:after {
+    width: 51%;
+    height: 51%;
+}
+
+@media only screen and (max-width: 767px) {
+    .btn {
+        margin-bottom: 30px;
+    }
 }

@@ -1,37 +1,68 @@
-<div class="container mt-4">
-  <h2>Search Movies</h2>
+<div class="container sl-2 mt-4 text-white text-center">
+    <div class="card mask-custom shadow-0 text-white border-white">
+        <div class="row">
+            <div id="form-tagline" class="col-md-4">
+                <div class="form-tagline">
+                    <i class="fas fa-clapperboard fa-5x"></i>
 
-  <div class="mb-3">
-    <label for="title">Title</label>
-    <input type="text" id="title" class="form-control" [(ngModel)]="title" placeholder="Enter movie title" />
-  </div>
+                    <p id="description" class="lead mt-3">Dive into a cinematic adventure and explore the vast universe of movies with our intriguing search box.</p>
+                </div>
+            </div>
+            <div id="form-content" class="col-md-8">
+                <div class="card-header">
+                    <h2 class="">Search Movies <i class="fas fa-magnifying-glass large-white-icon"></i></h2>
 
-  <div class="mb-3">
-    <label for="year">Year</label>
-    <input type="text" id="year" class="form-control" [(ngModel)]="year" placeholder="Enter year (optional)" />
-  </div>
+                </div>
 
-  <div class="mb-3">
-    <label for="genre">Genre</label>
-    <input type="text" id="genre" class="form-control" [(ngModel)]="genre" placeholder="Enter genre (optional)" />
-  </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="title" class="form-label"><strong>Title</strong></label>
+                                <input type="text" class="form-control" id="title" [(ngModel)]="title" placeholder="Enter movie title" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="year" class="form-label "><strong>Year</strong></label>
+                                <input type="text" class="form-control" id="year" [(ngModel)]="year" placeholder="Enter year (optional)" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="genre" class="form-label"><strong> Genre</strong></label>
+                                <input type="text" class="form-control" id="genre" [(ngModel)]="genre" placeholder="Enter genre (optional)" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="language" class="form-label"><strong> Language</strong></label>
+                                <input type="text" class="form-control" id="language" [(ngModel)]="language" placeholder="Enter language (optional)" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn mt-5 btn-lg" (click)="searchMovies()"><span>Search</span></button>
 
-  <div class="mb-3">
-    <label for="language">Language</label>
-    <input type="text" id="language" class="form-control" [(ngModel)]="language" placeholder="Enter language (optional)" />
-  </div>
 
-  <button class="btn btn-primary" (click)="searchMovies()">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+    <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
 
-  <div *ngIf="movies.length > 0" class="mt-4">
-    <h3>Search Results:</h3>
-    <ul class="list-group">
-      <li *ngFor="let movie of movies" class="list-group-item">
-        {{ movie.Title }} ({{ movie.Year }})
-        <button class="btn btn-info btn-sm float-end" routerLink="/movies/{{movie.imdbID}}">More Details</button>
-      </li>
-    </ul>
-  </div>
-</div>
+    <div *ngIf="movies.length > 0" class="mt-4">
+        <h3>Search Results:</h3>
+        <ul class="list-group list-group-flush">
+            <li *ngFor="let movie of movies" class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="flex-grow-1">
+                    {{ movie.Title }} ({{ movie.Year }})
+                </div>
+                <div>
+                    <button class="btn btn-secondary btn-sm" routerLink="/movies/{{movie.imdbID}}">More Details</button>
+                </div>
+            </li>
+        </ul>
+    </div>
