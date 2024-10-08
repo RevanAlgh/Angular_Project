@@ -16,6 +16,17 @@ export class MovieSearchComponent {
   movies: any[] = [];
   error: string = '';
 
+  genres: string[] = [
+    'Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 
+    'Romance', 'Thriller', 'Western', 'Sci-Fi', 'Adventure', 'Animation', 
+    'Biography', 'Documentary', 'Musical'
+  ];
+
+  languages: string[] = [
+    'English', 'Spanish', 'French', 'German', 'Italian', 'Japanese', 
+    'Korean', 'Mandarin', 'Hindi', 'Russian'
+  ];
+
   constructor(private movieService: MovieService) {}
 
   searchMovies() {

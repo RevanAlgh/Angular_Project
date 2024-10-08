@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class MovieService {
   private apiKey = 'f5b1b719'; 
   private baseUrl = 'https://www.omdbapi.com/';
+  
 
   constructor() {}
 

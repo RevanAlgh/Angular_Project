@@ -10,7 +10,6 @@
             <div id="form-content" class="col-md-8">
                 <div class="card-header">
                     <h2 class>Movies Search <i class="fas fa-magnifying-glass large-white-icon"></i></h2>
-
                 </div>
 
                 <div class="card-body">
@@ -23,27 +22,32 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="year" class="form-label "><strong>Year</strong></label>
-                                <input type="text" class="form-control" id="year" [(ngModel)]="year" placeholder=" (optional)" />
+                                <label for="year" class="form-label"><strong>Year</strong></label>
+                                <input type="number" class="form-control" id="year" [(ngModel)]="year" placeholder=" (Optional)" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="genre" class="form-label"><strong> Genre</strong></label>
-                                <input type="text" class="form-control" id="genre" [(ngModel)]="genre" placeholder=" (optional)" />
+                                <label for="genre" class="form-label"><strong>Genre</strong></label>
+                                <select id="genre" class="form-control" [(ngModel)]="genre">
+                                    <option value="">Select a genre (Optional)</option>
+                                    <option *ngFor="let g of genres" [value]="g">{{ g }}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="language" class="form-label"><strong> Language</strong></label>
-                                <input type="text" class="form-control " id="language" [(ngModel)]="language" placeholder=" (optional)" />
+                                <label for="language" class="form-label"><strong>Language</strong></label>
+                                <select id="language" class="form-control" [(ngModel)]="language">
+                                    <option value="">Select a language (Optional)</option>
+                                    <option *ngFor="let l of languages" [value]="l">{{ l }}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <button class="btn mt-5 btn-lg" (click)="searchMovies()"><span>Search</span></button>
-
                 </div>
             </div>
         </div>
@@ -55,22 +59,20 @@
         <div class="card mask-custom shadow-0 text-white border-white">
             <div class="card-body">
                 <h3>Search Results:</h3>
-                <ul class="list-group list-group-flush ">
+                <ul class="list-group list-group-flush">
                     <li *ngFor="let movie of movies" class="list-group-item d-flex justify-content-between align-items-center text-white input-custom-color">
                         <div class="col">
                             <img [src]="movie.Poster" alt="{{ movie.Title }} poster" height="60" width="60" *ngIf="movie.Poster !== 'N/A'" />
                         </div>
                         <div class="col">
-                            <div class="flex-grow-1 ">
-                                {{ movie.Title }} ({{ movie.Year }})
-                            </div>
+                            <div class="flex-grow-1">{{ movie.Title }} ({{ movie.Year }})</div>
                         </div>
                         <div>
-                            <button class="btn btn-sm" routerLink="/movies/{{movie.imdbID}}">More
-                                Details</button>
+                            <button class="btn btn-sm" routerLink="/movies/{{movie.imdbID}}">More Details</button>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
+</div>
