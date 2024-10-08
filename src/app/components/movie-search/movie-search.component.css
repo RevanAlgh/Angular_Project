@@ -1,6 +1,13 @@
 .container {
     max-width: 600px;
+    padding-left: 0; 
+    padding-right: 0; 
 }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+} 
 
 .list-group-item {
     display: flex;
@@ -19,7 +26,7 @@
 
 #form-tagline {
     background-color: rgba(1, 29, 20, 0.623);
-    padding: 30px;
+    padding: 30px; 
 }
 
 .large-white-icon {
@@ -83,3 +90,4 @@
         margin-bottom: 30px;
     }
 }
+
