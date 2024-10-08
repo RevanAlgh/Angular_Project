@@ -1,23 +1,23 @@
 <div class="container mt-4" *ngIf="movie">
-  <div class="card mask-custom shadow-0"> 
-    <div class="card-body">
-      <h2 class="card-title text-white">{{ movie.Title }} ({{ movie.Year }})</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <img [src]="movie.Poster" alt="{{ movie.Title }} poster" class="img-fluid" *ngIf="movie.Poster !== 'N/A'" />
-        </div>
-        <div class="col-md-8 text-white">
-          <p><strong>Released:</strong> {{ movie.Released }}</p>
-          <p><strong>Genre:</strong> {{ movie.Genre }}</p>
-          <p><strong>Language:</strong> {{ movie.Language }}</p>
-          <p><strong>IMDB Rating:</strong> {{ movie.imdbRating }}</p>
-          <p><strong>Plot:</strong> {{ movie.Plot }}</p>
+    <div class="card mask-custom shadow-0 border-0">
+        <div class="card-body p-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <img [src]="movie.Poster" alt="{{ movie.Title }} poster" class="img-fluid rounded" *ngIf="movie.Poster !== 'N/A'" />
+                </div>
+                <div class="col-md-8 text-white">
+                    <h1 class="card-title">{{ movie.Title }} ({{ movie.Year }})</h1>
+                    <p class="mt-5"><strong>Released :  </strong>{{ movie.Released }}</p>
+                    <p><strong>Genre :  </strong> {{ movie.Genre }}</p>
+                    <p><strong>Language :  </strong> {{ movie.Language }}</p>
+                    <p><strong>IMDB Rating :  </strong> {{ movie.imdbRating }}</p>
+                    <p><strong>Plot :  </strong>{{ movie.Plot }} </p>
 
-          <button class="btn btn-secondary btn-lg" (click)="addToTaskList()">Add to Task List</button>
+                    <button class="btn mt-4" (click)="addToTaskList()">Add to Movie List</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>

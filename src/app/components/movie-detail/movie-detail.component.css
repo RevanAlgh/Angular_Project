@@ -2,3 +2,60 @@
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, .15);
 }
+
+.btn {
+    color: #ffffff;
+    font-family: "Acme", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 7px;
+    padding: 8px 15px;
+    border: 2px solid #000000;
+    border-radius: 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    color: #043028;
+    border: 2px solid #043028;
+}
+
+.btn:before,
+.btn:after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    border-color: #1b241f;
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:after {
+    border-width: 0 2px 2px 0;
+    top: auto;
+    bottom: -6px;
+    left: auto;
+    right: -6px;
+}
+
+.btn:hover:before,
+.btn:hover:after {
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border-color: #043028;
+    transform: rotateY(180deg);
+}
+
+@media only screen and (max-width: 767px) {
+    .btn {
+        margin-bottom: 30px;
+    }
+}
