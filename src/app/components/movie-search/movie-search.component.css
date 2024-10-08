@@ -28,7 +28,7 @@
 }
 
 .btn {
-    color: #070707;
+    color: #fffcfc;
     font-family: "Acme", sans-serif;
     font-size: 18px;
     font-weight: 700;
@@ -82,4 +82,8 @@
     .btn {
         margin-bottom: 30px;
     }
+}
+
+.input-custom-color {
+    background-color: rgba(255, 255, 255, .15);
 }

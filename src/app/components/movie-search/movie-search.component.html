@@ -4,7 +4,6 @@
             <div id="form-tagline" class="col-md-4">
                 <div class="form-tagline">
                     <i class="fas fa-clapperboard fa-5x"></i>
-
                     <p id="description" class="lead mt-3">Dive into a cinematic adventure and explore the vast universe of movies with our intriguing search box.</p>
                 </div>
             </div>
@@ -19,13 +18,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="title" class="form-label"><strong>Title</strong></label>
-                                <input type="text" class="form-control" id="title" [(ngModel)]="title" placeholder="Enter movie title" />
+                                <input type="text" class="form-control" id="title" [(ngModel)]="title" placeholder="" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="year" class="form-label "><strong>Year</strong></label>
-                                <input type="text" class="form-control" id="year" [(ngModel)]="year" placeholder="Enter year (optional)" />
+                                <input type="text" class="form-control" id="year" [(ngModel)]="year" placeholder=" (optional)" />
                             </div>
                         </div>
                     </div>
@@ -33,13 +32,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="genre" class="form-label"><strong> Genre</strong></label>
-                                <input type="text" class="form-control" id="genre" [(ngModel)]="genre" placeholder="Enter genre (optional)" />
+                                <input type="text" class="form-control" id="genre" [(ngModel)]="genre" placeholder=" (optional)" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="language" class="form-label"><strong> Language</strong></label>
-                                <input type="text" class="form-control" id="language" [(ngModel)]="language" placeholder="Enter language (optional)" />
+                                <input type="text" class="form-control " id="language" [(ngModel)]="language" placeholder=" (optional)" />
                             </div>
                         </div>
                     </div>
@@ -57,10 +56,15 @@
         <div class="card mask-custom shadow-0 text-white border-white">
             <div class="card-body">
                 <h3>Search Results:</h3>
-                <ul class="list-group list-group-flush">
-                    <li *ngFor="let movie of movies" class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="flex-grow-1">
-                            {{ movie.Title }} ({{ movie.Year }})
+                <ul class="list-group list-group-flush ">
+                    <li *ngFor="let movie of movies" class="list-group-item d-flex justify-content-between align-items-center text-white input-custom-color">
+                        <div class="col">
+                            <img [src]="movie.Poster" alt="{{ movie.Title }} poster" height="60" width="60" *ngIf="movie.Poster !== 'N/A'" />
+                        </div>
+                        <div class="col">
+                            <div class="flex-grow-1 ">
+                                {{ movie.Title }} ({{ movie.Year }})
+                            </div>
                         </div>
                         <div>
                             <button class="btn btn-sm" routerLink="/movies/{{movie.imdbID}}">More Details</button>
