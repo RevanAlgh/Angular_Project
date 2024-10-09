@@ -1,27 +1,15 @@
-# CollaborativeMoviePlanningApp
+# Movie Planning
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+## Project Idea:
 
-## Development server
+The "Movie Planner" project aims to help users easily explore and manage their movie choices. The application allows users to search for movies based on title, year, genre, and language. Users can add movies to their personal watchlist and create a task list related to their movie plans, such as picking snacks or organizing a viewing party. The app features a simple and appealing user interface that facilitates easy navigation and quick access to desired information. Through this project, we aim to provide movie enthusiasts with an enjoyable and efficient experience in planning their viewing activities.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Project Link: 
+[Movie Planner](https://graceful-strudel-d21cec.netlify.app/)
 
-## Code scaffolding
+## GitHub Project Link: 
+[GitHub](https://github.com/RevanAlgh/Angular_Project)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Team Members:
+- Revan 
+- Lina
