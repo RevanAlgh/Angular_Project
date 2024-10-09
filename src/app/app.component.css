@@ -1,5 +1,11 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .bg-image {
-    background-size: cover; /* Ensures the background image covers the entire div */
-    background-position: center; /* Centers the image */
-    padding-bottom: 50px; /* Adds space for the footer */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; 
 }
