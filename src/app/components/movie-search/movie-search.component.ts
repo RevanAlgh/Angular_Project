@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -8,39 +9,41 @@ import { Router } from '@angular/router';
   templateUrl: './movie-search.component.html',
   styleUrl: './movie-search.component.css'
 })
-export class MovieSearchComponent {
-  title: string = '';
-  year: string = '';
-  genre: string = '';
-  language: string = '';
+
+export class MovieSearchComponent implements OnInit {
+  movieForm!: FormGroup;
   movies: any[] = [];
   error: string = '';
 
-  genres: string[] = [
-    'Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 
-    'Romance', 'Thriller', 'Western', 'Sci-Fi', 'Adventure', 'Animation', 
-    'Biography', 'Documentary', 'Musical'
-  ];
+  // Define genres and languages
+  genres: string[] = ['Action', 'Adventure', 'Comedy', 'Drama', 'Horror', 'Sci-Fi', 'Thriller', 'Animation', 'Fantasy', 'Romance', 'Documentary', 'Mystery', 'Musical', 'Western', 'Biography'];
+  languages: string[] = ['English', 'Spanish', 'French', 'German', 'Mandarin', 'Hindi', 'Japanese', 'Russian', 'Italian', 'Korean'];
 
-  languages: string[] = [
-    'English', 'Spanish', 'French', 'German', 'Italian', 'Japanese', 
-    'Korean', 'Mandarin', 'Hindi', 'Russian'
-  ];
+  constructor(private fb: FormBuilder, private movieService: MovieService) {}
 
-  constructor(private movieService: MovieService) {}
+  ngOnInit() {
+    this.movieForm = this.fb.group({
+      title: ['', Validators.required],
+      year: [''],
+      genre: [''],
+      language: ['']
+    });
+  }
 
   searchMovies() {
-    this.movieService.searchMovies(this.title, this.year, this.genre, this.language)
-      .then((response: any) => {
-        if (response.Search) {
-          this.movies = response.Search;
-        } else {
-          this.error = 'No movies found';
-        }
-      })
-      .catch((error: any) => {
-        this.error = 'Error fetching movies';
-        console.error(error);
-      });
+    if (this.movieForm.valid) {
+      const { title, year, genre, language } = this.movieForm.value;
+      this.movieService.searchMovies(title, year, genre, language)
+        .then(response => {
+          if (response.Search) {
+            this.movies = response.Search;
+          } else {
+            this.error = 'No movies found';
+          }
+        })
+        .catch(error => {
+          this.error = 'Error fetching movies';
+        });
+    }
   }
 }

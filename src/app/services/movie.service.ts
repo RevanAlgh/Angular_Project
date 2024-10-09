@@ -13,7 +13,7 @@ export class MovieService {
   // Search movies using fetch
   async searchMovies(title: string, year?: string, genre?: string, language?: string): Promise<any> {
     let query = `${this.baseUrl}?s=${title}&apikey=${this.apiKey}`;
-
+  
     if (year) {
       query += `&y=${year}`;
     }
@@ -23,7 +23,7 @@ export class MovieService {
     if (language) {
       query += `&language=${language}`;
     }
-
+  
     try {
       const response = await fetch(query);
       if (!response.ok) {
@@ -34,7 +34,7 @@ export class MovieService {
       console.error('Error:', error);
       throw error;
     }
-  }
+  }  
 
   // Get movie details using fetch
   async getMovieDetails(id: string): Promise<any> {
