@@ -1,0 +1,20 @@
+.footer {
+    padding: 1rem 0;
+    color: #969696; 
+    background-color: #bebebe;
+}
+
+.footer-text {
+    font-size: 2rem; 
+}
+
+.footer-link {
+    color: #5e9693; /* Link color */
+    text-decoration: none;
+    margin: 0 2.5rem; /* Space between links */
+}
+
+.footer-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+

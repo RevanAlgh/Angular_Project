@@ -3,6 +3,8 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +14,7 @@ import { MovieSearchComponent } from './components/movie-search/movie-search.com
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +23,16 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
     MovieSearchComponent,
     TaskItemComponent,
     NavbarComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule     
+    CommonModule,
+    ReactiveFormsModule     
   ],
   providers: [
     provideClientHydration()
