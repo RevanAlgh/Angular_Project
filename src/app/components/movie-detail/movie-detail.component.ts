@@ -11,6 +11,7 @@ import { TaskService } from '../../services/task.service';
 export class MovieDetailComponent implements OnInit {
   movie: any;
   error: string = '';
+  showSuccessAlert: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +37,10 @@ export class MovieDetailComponent implements OnInit {
   addToTaskList() {
     if (this.movie) {
       this.taskService.addMovieTask(this.movie.Title);
-      alert('Movie added to your task list!');
+      this.showSuccessAlert = true; // Show success alert
+      setTimeout(() => {
+        this.showSuccessAlert = false; // Hide alert after 3 seconds
+      }, 3000);
     }
   }
 }

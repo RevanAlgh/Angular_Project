@@ -14,6 +14,11 @@
                     <p><strong>Plot :  </strong>{{ movie.Plot }} </p>
 
                     <button class="btn mt-4" (click)="addToTaskList()">Add to Movie List</button>
+                     <!-- Success Alert -->
+                     <div *ngIf="showSuccessAlert" class="alert alert-success d-flex align-items-center mt-3 mask-custom" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        <div>Movie added to your Movie list!</div>
+                    </div>
                 </div>
             </div>
         </div>
